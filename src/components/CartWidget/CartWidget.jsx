@@ -1,8 +1,8 @@
-// components/CartWidget.jsx
+import './CartWidget.css';
 
 function CartWidget({cantidad}) {
  return (
-    <button style={{ fontSize: "1.2rem" }}>
+    <button className="cart-widget">
       🛒 ({cantidad})
     </button>
   );
