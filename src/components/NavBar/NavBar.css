@@ -7,8 +7,8 @@
 }
 
 .navbar ul {
-    display: flex;
-    list-Style: none;
-    gap: 1rem; 
-    font-Size: 1.2rem;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  font-size: 1.2rem;
 }

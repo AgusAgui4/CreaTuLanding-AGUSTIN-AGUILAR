@@ -1,10 +1,10 @@
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
 function App() {
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <ItemListContainer greetings="¡Bienvenido a TECshop!" />
     </>
   );
