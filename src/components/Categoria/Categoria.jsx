@@ -4,7 +4,7 @@ import "./categoria.css";
 
 function Categoria() {
   const { categoriaId } = useParams();
-  const filtrados = productos.filter(prod => prod.categoria === categoriaId);
+  const filtrados = productos.filter((prod) => prod.categoria === categoriaId);
 
   return (
     <div className="categoria-contenedor">
@@ -17,10 +17,9 @@ function Categoria() {
             <button>Volver al inicio</button>
           </Link>
         </div>
-      ) 
-      : (
+      ) : (
         <ul>
-          {filtrados.map(prod => (
+          {filtrados.map((prod) => (
             <li key={prod.id}>
               <img src={prod.imagen} width="110" alt={prod.nombre} />
               <p>{prod.nombre}</p>
@@ -36,7 +35,4 @@ function Categoria() {
   );
 }
 
-
 export default Categoria;
-
-

@@ -1,22 +1,21 @@
 import "./ItemListContainer.css";
 import { Link } from "react-router";
 import React, { useEffect, useState } from "react";
-import productos from "../../data/DB";  // Importando los productos simulados
+import productos from "../../data/DB"; // Importando los productos simulados
 
 function ItemListContainer({ greetings }) {
-  const [productosData, setProductosData] = useState([]);  
-  const [loading, setLoading] = useState(true);          
+  const [productosData, setProductosData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     setTimeout(() => {
-      setProductosData(productos);  
-      setLoading(false);          
-    }, 3000); 
-  }, []); 
+      setProductosData(productos);
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   if (loading) {
-    return <div>Cargando...</div>;  
+    return <div>Cargando...</div>;
   }
 
   return (

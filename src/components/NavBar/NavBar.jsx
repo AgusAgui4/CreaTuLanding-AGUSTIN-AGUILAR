@@ -10,18 +10,28 @@ function NavBar() {
       </Link>
 
       <ul className="nav-links">
-        <li><Link to="/">Inicio</Link></li>
+        <li>
+          <Link to="/">Inicio</Link>
+        </li>
 
         <li className="desplegable">
           <span>🢛 Categorías 🢛</span>
           <ul className="desplegable-contenido">
-            <li><Link to="/categoria/electronica">Electrónica</Link></li>
-            <li><Link to="/categoria/accesorios">Accesorios</Link></li>
-            <li><Link to="/categoria/otros">Otros</Link></li>
+            <li>
+              <Link to="/categoria/electronica">Electrónica</Link>
+            </li>
+            <li>
+              <Link to="/categoria/accesorios">Accesorios</Link>
+            </li>
+            <li>
+              <Link to="/categoria/otros">Otros</Link>
+            </li>
           </ul>
         </li>
 
-        <li><Link to="/contacto">Contacto</Link></li>
+        <li>
+          <Link to="/contacto">Contacto</Link>
+        </li>
       </ul>
 
       <CartWidget cantidad={4} />
@@ -30,4 +40,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
