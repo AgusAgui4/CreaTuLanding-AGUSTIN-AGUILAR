@@ -1,38 +1,37 @@
 import "./ItemListContainer.css";
+import { Link } from "react-router";
+import React, { useEffect, useState } from "react";
+import productos from "../../data/DB";  // Importando los productos simulados
 
 function ItemListContainer({ greetings }) {
-  const productos = [
-    {
-      nombre: "Smartwatch",
-      imagen:
-        "https://static.bidcom.com.ar/publicacionesML/productos/REL00210/1000x1000-REL00210.jpg",
-    },
-    {
-      nombre: "Cargador",
-      imagen:
-        "https://pixelstore.com.ar/wp-content/uploads/2021/08/cargador-samsung-1.jpg",
-    },
-    {
-      nombre: "Auricular",
-      imagen:
-        "https://tccommercear.vtexassets.com/arquivos/ids/160894/158062-800-auto.png?v=638677160450000000",
-    },
-    {
-      nombre: "Mouse",
-      imagen:
-        "https://s3-sa-east-1.amazonaws.com/saasargentina/oaPmQNJPQeMZynN9AOk5/imagen",
-    },
-  ];
+  const [productosData, setProductosData] = useState([]);  
+  const [loading, setLoading] = useState(true);          
+
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setProductosData(productos);  
+      setLoading(false);          
+    }, 3000); 
+  }, []); 
+
+  if (loading) {
+    return <div>Cargando...</div>;  
+  }
 
   return (
     <div className="lista-productos">
       <h2>{greetings}</h2>
-      <h2 style={{ textAlign: "center" }}>Lista de Productos</h2>
+      <h2 className="subtitulo">Lista de Productos</h2>
       <ul>
-        {productos.map((producto) => (
-          <li>
-            <img src={producto.imagen} width="100" />
+        {productosData.map((producto) => (
+          <li key={producto.id}>
+            <img src={producto.imagen} width="110" alt={producto.nombre} />
             <p>{producto.nombre}</p>
+            <p>${producto.precio}</p>
+            <Link to={`/producto/${producto.id}`}>
+              <button>Detalle del producto</button>
+            </Link>
           </li>
         ))}
       </ul>
