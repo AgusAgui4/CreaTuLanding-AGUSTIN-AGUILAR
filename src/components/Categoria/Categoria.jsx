@@ -1,5 +1,5 @@
+import "./Categoria.css";
 import { useParams, Link } from "react-router"; 
-import "./categoria.css";
 import { useEffect, useState } from "react";
 import { db } from "../../FirebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
