@@ -9,7 +9,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        <img src="/src/assets/logo.png" alt="Logo de la tienda" />
+        <img src="../../assets/logo.jpg" alt="Logo de la tienda" />
       </Link>
 
       <ul className="nav-links">
