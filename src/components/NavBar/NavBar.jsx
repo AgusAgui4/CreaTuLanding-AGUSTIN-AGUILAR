@@ -1,8 +1,11 @@
-import "./NavBar.css";
+import { Link } from "react-router"; 
+import { useCart } from "../cart/CartContext"; 
 import CartWidget from "../CartWidget/CartWidget";
-import { Link } from "react-router"; // CORRECTO
+import "./NavBar.css";
 
 function NavBar() {
+  const { cantidadEnCarrito } = useCart(); // Obtener la cantidad de productos en el carrito
+
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
@@ -34,7 +37,11 @@ function NavBar() {
         </li>
       </ul>
 
-      <CartWidget cantidad={4} />
+      <Link to="/carrito">
+        <button className="cart-button">
+          <CartWidget cantidad={cantidadEnCarrito} />
+        </button>
+      </Link>
     </nav>
   );
 }

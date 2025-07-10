@@ -3,6 +3,7 @@ const productos = [
     id: "1",
     nombre: "Smartwatch",
     categoria: "accesorios",
+    stock: 4,
     descripcion: "Reloj inteligente con monitor cardíaco",
     precio: 10000,
     imagen:
@@ -12,6 +13,7 @@ const productos = [
     id: "2",
     nombre: "Cargador",
     categoria: "electronica",
+    stock: 4,
     descripcion: "Cargador rápido para dispositivos móviles",
     precio: 3000,
     imagen:
@@ -21,6 +23,7 @@ const productos = [
     id: "3",
     nombre: "Auricular",
     categoria: "accesorios",
+    stock: 4,
     descripcion: "Auriculares bluetooth con cancelación de ruido",
     precio: 5000,
     imagen:
@@ -30,6 +33,7 @@ const productos = [
     id: "4",
     nombre: "Mouse",
     categoria: "electronica",
+    stock: 4,
     descripcion: "Mouse inalámbrico ergonómico",
     precio: 2500,
     imagen:
@@ -37,4 +41,5 @@ const productos = [
   },
 ];
 
-export default productos;
+ 
+export default imagenes;

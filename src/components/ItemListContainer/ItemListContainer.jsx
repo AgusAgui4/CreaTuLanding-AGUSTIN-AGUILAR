@@ -1,22 +1,34 @@
 import "./ItemListContainer.css";
-import { Link } from "react-router";
+import { Link } from "react-router"; 
 import React, { useEffect, useState } from "react";
-import productos from "../../data/DB"; // Importando los productos simulados
+import { db } from "../../FirebaseConfig"; 
+import { collection, getDocs } from "firebase/firestore"; 
 
 function ItemListContainer({ greetings }) {
   const [productosData, setProductosData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setProductosData(productos);
-      setLoading(false);
-    }, 3000);
+    const fetchProductos = async () => {
+      try {
+        const productosRef = collection(db, "productos"); 
+        const snapshot = await getDocs(productosRef);
+        const docs = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setProductosData(docs);
+      } catch (error) {
+        console.error("Error al obtener los productos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductos();
   }, []);
 
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <div className="lista-productos">
@@ -25,7 +37,7 @@ function ItemListContainer({ greetings }) {
       <ul>
         {productosData.map((producto) => (
           <li key={producto.id}>
-            <img src={producto.imagen} width="110" alt={producto.nombre} />
+            <img src={`/image/${producto.id}.jpg`} width="110" alt={producto.nombre}/>
             <p>{producto.nombre}</p>
             <p>${producto.precio}</p>
             <Link to={`/producto/${producto.id}`}>
