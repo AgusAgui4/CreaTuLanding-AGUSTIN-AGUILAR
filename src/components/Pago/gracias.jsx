@@ -16,13 +16,19 @@ function Gracias() {
       <p>Tu compra ha sido realizada con éxito.</p>
 
       <h3>Resumen de la compra:</h3>
-      <ul>
-        {carrito.map((producto) => (
-          <li key={producto.id}>
-            <span>{producto.nombre}</span> - {producto.cantidad} x ${producto.precio}
-          </li>
-        ))}
-      </ul>
+<ul>
+  {carrito.map((producto) => (
+    <li key={producto.id} className="producto-item">
+      <img src={`/image/${producto.id}.jpg`} alt={producto.nombre} />
+      <div className="producto-detalle">
+        <span className="nombre">{producto.nombre}</span>
+        <span className="cantidad-precio">
+          {producto.cantidad} x ${producto.precio}
+        </span>
+      </div>
+    </li>
+  ))}
+</ul>
 
       <p className="total-compra">
         <strong>Total: ${calcularTotal()}</strong>

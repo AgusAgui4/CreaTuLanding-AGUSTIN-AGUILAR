@@ -32,7 +32,9 @@ function ItemListContainer({ greetings }) {
 
   return (
     <div className="lista-productos">
-      <h2>{greetings}</h2>
+      <h2 style={{ color: '#007bff', fontSize: '2rem', textAlign: 'center'}}>
+        {greetings}
+      </h2>
       <h2 className="subtitulo">Lista de Productos</h2>
       <ul>
         {productosData.map((producto) => (

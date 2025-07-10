@@ -1,5 +1,5 @@
 import "./Categoria.css";
-import { useParams, Link } from "react-router"; 
+import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
 import { db } from "../../FirebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -48,7 +48,11 @@ function Categoria() {
         <ul>
           {filtrados.map((prod) => (
             <li key={prod.id}>
-              <img src={`/image/${prod.id}.jpg`} width="110" alt={prod.nombre} />
+              <img
+                src={`/image/${prod.id}.jpg`}
+                width="110"
+                alt={prod.nombre}
+              />
               <p>{prod.nombre}</p>
               <p>${prod.precio}</p>
               <Link to={`/producto/${prod.id}`}>

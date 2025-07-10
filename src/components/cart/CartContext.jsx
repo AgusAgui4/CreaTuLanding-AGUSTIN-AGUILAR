@@ -9,10 +9,14 @@ export const CartProvider = ({ children }) => {
   // Función para agregar productos al carrito
   const agregarAlCarrito = (producto) => {
     setCarrito((prevCarrito) => {
-      const productoExistente = prevCarrito.find((item) => item.id === producto.id);
+      const productoExistente = prevCarrito.find(
+        (item) => item.id === producto.id
+      );
       if (productoExistente) {
         return prevCarrito.map((item) =>
-          item.id === producto.id ? { ...item, cantidad: item.cantidad + producto.cantidad } : item
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + producto.cantidad }
+            : item
         );
       } else {
         return [...prevCarrito, producto];
@@ -35,11 +39,20 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const cantidadEnCarrito = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+  const cantidadEnCarrito = carrito.reduce(
+    (total, producto) => total + producto.cantidad,
+    0
+  );
 
   return (
     <CartContext.Provider
-      value={{ carrito, agregarAlCarrito, eliminarDelCarrito, cantidadEnCarrito, actualizarCantidad }}
+      value={{
+        carrito,
+        agregarAlCarrito,
+        eliminarDelCarrito,
+        cantidadEnCarrito,
+        actualizarCantidad,
+      }}
     >
       {children}
     </CartContext.Provider>

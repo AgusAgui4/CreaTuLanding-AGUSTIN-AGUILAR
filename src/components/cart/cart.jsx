@@ -1,6 +1,6 @@
 import "./cart.css";
 import { useCart } from "./CartContext";
-import { Link } from "react-router"; 
+import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { db } from "../../FirebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -34,7 +34,9 @@ function Carrito() {
     const productosSinStock = [];
 
     for (let productoCarrito of carrito) {
-      const productoBD = productosFirestore.find((prod) => prod.id === productoCarrito.id);
+      const productoBD = productosFirestore.find(
+        (prod) => prod.id === productoCarrito.id
+      );
       if (!productoBD || productoCarrito.cantidad > productoBD.stock) {
         productosSinStock.push({
           ...productoCarrito,
@@ -57,7 +59,10 @@ function Carrito() {
   };
 
   const calcularTotal = () => {
-    return carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+    return carrito.reduce(
+      (total, producto) => total + producto.precio * producto.cantidad,
+      0
+    );
   };
 
   if (loading) return <p>Cargando...</p>;
@@ -72,28 +77,38 @@ function Carrito() {
           <ul>
             {carrito.map((producto) => (
               <li key={producto.id}>
-                <img src={`/image/${producto.id}.jpg`} width="50" alt={producto.nombre} />
+                <img
+                  src={`/image/${producto.id}.jpg`}
+                  width="50"
+                  alt={producto.nombre}
+                />
                 <span>{producto.nombre}</span>
                 <div>
                   <input
                     type="number"
                     min="1"
                     max={
-                      productosFirestore.find((prod) => prod.id === producto.id)?.stock || producto.stock
+                      productosFirestore.find((prod) => prod.id === producto.id)
+                        ?.stock || producto.stock
                     }
                     value={producto.cantidad}
                     onChange={(e) =>
-                      manejarCantidadCambio(producto.id, parseInt(e.target.value))
+                      manejarCantidadCambio(
+                        producto.id,
+                        parseInt(e.target.value)
+                      )
                     }
                   />
                   x ${producto.precio}
                 </div>
-                <button onClick={() => eliminarDelCarrito(producto.id)}>Eliminar</button>
+                <button onClick={() => eliminarDelCarrito(producto.id)}>
+                  Eliminar
+                </button>
               </li>
             ))}
           </ul>
           <div>
-            <p>Total: ${calcularTotal()}</p>
+            <p className="total">Total: ${calcularTotal()}</p>
 
             {!tieneStockSuficiente ? (
               <div style={{ color: "red" }}>
@@ -101,7 +116,8 @@ function Carrito() {
                 <ul>
                   {productosSinStock.map((producto) => (
                     <li key={producto.id}>
-                      {producto.nombre} – Solo hay {producto.stockDisponible} disponibles
+                      {producto.nombre} – Solo hay {producto.stockDisponible}{" "}
+                      disponibles
                     </li>
                   ))}
                 </ul>

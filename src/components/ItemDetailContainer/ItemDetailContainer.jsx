@@ -1,14 +1,14 @@
 import "./ItemDetailContainer.css";
-import { useParams, Link } from "react-router"; 
+import { useParams, Link } from "react-router";
 import Contador from "../Contador/Contador";
 import { useCart } from "../cart/CartContext";
 import { useEffect, useState } from "react";
-import { db } from "../../FirebaseConfig"; 
-import { doc, getDoc } from "firebase/firestore"; 
+import { db } from "../../FirebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 
 function DetalleProducto() {
-  const { productoId } = useParams(); 
-  const { agregarAlCarrito } = useCart(); 
+  const { productoId } = useParams();
+  const { agregarAlCarrito } = useCart();
 
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ function DetalleProducto() {
         if (docSnap.exists()) {
           setProducto({ id: docSnap.id, ...docSnap.data() });
         } else {
-          setProducto(null); 
+          setProducto(null);
         }
       } catch (error) {
         console.error("Error al obtener el producto:", error);
@@ -45,7 +45,11 @@ function DetalleProducto() {
 
   return (
     <div className="detalle-producto">
-      <img src={`/image/${producto.id}.jpg`} width="250" alt={producto.nombre} />
+      <img
+        src={`/image/${producto.id}.jpg`}
+        width="250"
+        alt={producto.nombre}
+      />
       <h2>{producto.nombre}</h2>
       <p>{producto.descripcion}</p>
       <p className="precio">Precio: ${producto.precio}</p>
